@@ -2,7 +2,7 @@
 
 A modern, interactive, and visually engaging personal portfolio built with Next.js, React, Tailwind CSS, and Framer Motion. This portfolio showcases projects and skills using dynamic scroll animations and a sleek user interface.
 
-> **🌐 Live Demo**: [https://portfolio-ayushkumar.vercel.app/](https://portfolio-ayushkumar.vercel.app/)
+> **🌐 Live Demo**: [https://ayushkumar1289.vercel.app/](https://ayushkumar1289.vercel.app/)
 
 ## 🚀 Features
 

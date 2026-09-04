@@ -5,6 +5,7 @@ import { Overlay } from '@/components/Overlay';
 import { Projects } from '@/components/Projects';
 import { useScrollProgress } from '@/hooks/useScrollProgress';
 import { motion } from 'framer-motion';
+import { Code2, Terminal, Briefcase, Compass } from 'lucide-react';
 
 export default function Page() {
   const { containerRef, scrollYProgress } = useScrollProgress();
@@ -158,25 +159,31 @@ export default function Page() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
             {[
-              'Mastering Data Structures & Algorithms',
-              'Exploring Full-Stack Web Development',
-              'Building meaningful software projects',
-              'Creating educational content around programming and self-improvement',
+              { text: 'Mastering Data Structures & Algorithms', icon: Code2 },
+              { text: 'Exploring Full-Stack Web Development', icon: Terminal },
+              { text: 'Building meaningful software projects', icon: Briefcase },
+              { text: 'Creating educational content around programming and self-improvement', icon: Compass },
             ].map((item, idx) => (
               <motion.div
-                key={item}
+                key={item.text}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 + idx * 0.1 }}
-                className="flex items-start gap-3 p-6 rounded-xl border backdrop-blur-sm"
+                whileHover={{ scale: 1.02, translateY: -4 }}
+                transition={{ duration: 0.4, delay: 0.1 + idx * 0.1 }}
+                className="group relative flex items-start gap-4 p-6 rounded-xl border backdrop-blur-sm overflow-hidden"
                 style={{
-                  borderColor: 'rgba(217, 112, 48, 0.12)',
-                  background: 'rgba(217, 112, 48, 0.03)',
+                  borderColor: 'rgba(217, 112, 48, 0.15)',
+                  background: 'rgba(217, 112, 48, 0.02)',
                 }}
               >
-                <span className="font-mono text-sm mt-0.5" style={{ color: '#d97030' }}>→</span>
-                <p className="font-sans" style={{ color: '#c8bdb0' }}>{item}</p>
+                {/* Glow effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#d97030]/0 to-[#d97030]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div className="mt-0.5 p-2 rounded-lg bg-[#d97030]/10 text-[#d97030] group-hover:scale-110 group-hover:bg-[#d97030]/20 transition-all duration-300 relative z-10">
+                  <item.icon size={20} strokeWidth={1.5} />
+                </div>
+                <p className="font-sans text-lg relative z-10 transition-colors duration-300 group-hover:text-white" style={{ color: '#c8bdb0' }}>{item.text}</p>
               </motion.div>
             ))}
           </div>
